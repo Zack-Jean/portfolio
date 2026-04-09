@@ -1,0 +1,25 @@
+# zackjean.com robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap (if you add @astrojs/sitemap later)
+# Sitemap: https://zackjean.com/sitemap-index.xml
+
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /

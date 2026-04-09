@@ -1,0 +1,48 @@
+---
+/**
+ * ObfuscatedEmail.astro
+ *
+ * Drop-in replacement for <a href="mailto:..."> links.
+ * Encodes the email in base64 so scrapers can't harvest it
+ * from raw HTML. JS decodes it on page load for real users.
+ *
+ * Usage:
+ *   <ObfuscatedEmail
+ *     user="zack.jean"
+ *     domain="gmail.com"
+ *     label="Email"
+ *     class="your-css-class"
+ *   />
+ */
+
+interface Props {
+  user: string;
+  domain: string;
+  label?: string;
+  class?: string;
+}
+
+const { user, domain, label, class: className } = Astro.props;
+const id = `email-${Math.random().toString(36).slice(2, 9)}`;
+
+// Encode server-side so the raw address never appears in delivered HTML
+const encodedUser = globalThis.btoa(user);
+const encodedDomain = globalThis.btoa(domain);
+---
+
+<a id={id} href="#" class={className} rel="noopener noreferrer">
+  {label || "Email"}
+</a>
+
+<script define:vars={{ id, encodedUser, encodedDomain, label }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById(id);
+    if (el) {
+      const addr = atob(encodedUser) + "@" + atob(encodedDomain);
+      el.href = "mailto:" + addr;
+      if (!label) {
+        el.textContent = addr;
+      }
+    }
+  });
+</script>
