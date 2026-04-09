@@ -3,6 +3,12 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import { projects } from "../../data/projects";
 
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
 const { slug } = Astro.params;
 const project = projects.find((p) => p.slug === slug);
 
