@@ -1,0 +1,232 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import { projects } from "../../data/projects";
+
+const { slug } = Astro.params;
+const project = projects.find((p) => p.slug === slug);
+
+if (!project) return Astro.redirect("/");
+
+// Extended content per project
+const content: Record<string, {
+  problem: string;
+  solution: string;
+  impact: string;
+  details: string[];
+}> = {
+  scorecard: {
+    problem: "QA reviews for technical support specialists were manual, inconsistent, and time-consuming — reviewers spent hours pulling data from multiple systems with no single source of truth.",
+    solution: "Built a fully automated scorecard system that pulls data from Zoho Desk (ticket volume, CSAT, escalations), Toggl (time tracking), and internal QA logs via REST APIs. Scores are calculated on a weighted rubric and written to a Google Sheet dashboard that updates daily.",
+    impact: "Reduced QA review time by ~80%. Enabled consistent, data-driven performance conversations. Surfaced coaching opportunities that were previously invisible.",
+    details: ["Python", "Zoho Desk REST API", "Toggl Track API", "Google Sheets API", "Weighted scoring rubric", "Automated daily refresh"],
+  },
+  "toggl-sheets": {
+    problem: "Kijiji client reporting required manually compiling Toggl time data across two workspaces — a tedious weekly process prone to errors and inconsistency.",
+    solution: "Built a Google Apps Script pipeline that authenticates against both Toggl workspaces, pulls billable hours by project and team member, normalizes region labels, and writes to a formatted Google Sheet with a monthly export to an external shared sheet.",
+    impact: "Eliminated ~3 hours of weekly manual reporting. Reports now run automatically every morning via a time-based trigger.",
+    details: ["Google Apps Script", "Toggl Track API", "Multi-workspace auth", "Billable hour filters", "Region normalization", "Automated daily trigger", "Monthly export"],
+  },
+  "ops-revenue": {
+    problem: "Leadership needed a regular pulse on ops revenue metrics, but the existing process required manual data pulls and a formatted email built from scratch each time.",
+    solution: "Built an Apps Script report (sendOpsRevenueReport) that queries Monday.com for ops data, formats it as an inline HTML email with Feedonomics brand styling, applies row-capping logic to stay under Gmail's 102KB HTML limit, and sends automatically on a schedule.",
+    impact: "Ops revenue visibility went from ad-hoc to automated. Leadership receives consistent, branded reports without any manual effort.",
+    details: ["Google Apps Script", "Monday.com API", "Gmail API", "Inline HTML email", "Row-cap logic", "Scheduled delivery"],
+  },
+  "ai-enablement": {
+    problem: "Claude was available to the team but adoption was low and inconsistent — most staff didn't know how to prompt effectively or where it fit into their workflow.",
+    solution: "Designed and delivered a three-session Claude AI Enablement Program for the Global Services team. Sessions covered practical claude.ai usage, prompt engineering fundamentals, and workflow integration. Built a prompt library, follow-up resources, and usage tracking.",
+    impact: "Measurable increase in Claude adoption across the team. Staff moved from occasional use to integrated daily workflows. Program is being expanded to additional teams.",
+    details: ["Claude / Anthropic", "Prompt engineering", "3-session curriculum", "Prompt library", "Usage analytics", "Training materials"],
+  },
+  "monday-board": {
+    problem: "Monday.com's native reporting didn't surface the cross-board operational metrics leadership needed, and manual exports were slow and stale.",
+    solution: "Built a Google Apps Script integration using Monday.com's GraphQL API with declarative FIELD_CONFIG, parallel fetchAll with batch chunking (10 items, 1500ms delay) to avoid quota errors, and support for both Zoho and Salesforce link patterns in a unified ops dashboard.",
+    impact: "Real-time ops dashboard replaced a manual weekly process. Batch architecture prevented API quota issues at scale.",
+    details: ["Google Apps Script", "Monday.com GraphQL API", "Batch fetching", "Declarative field config", "Zoho + Salesforce link support"],
+  },
+  "make-sop": {
+    problem: "Make.com automations were being built inconsistently across the team — no naming conventions, logging standards, or deployment process — creating a maintenance and security risk.",
+    solution: "Wrote a comprehensive Make.com SOP covering governance, security architecture, scenario naming, a 12-field logging schema writing to MakeScenarioRunLogs, Slack alerting to #global-services-ai-champions, and a formal TESTING → LIVE deployment process.",
+    impact: "Standardized automation practice across the team. New scenarios are built to spec from day one, reducing debugging time and audit risk.",
+    details: ["Make.com", "Governance framework", "12-field logging schema", "Slack alerting", "TESTING/LIVE environments", "Security architecture"],
+  },
+};
+
+const detail = content[slug!] ?? {
+  problem: "Coming soon.",
+  solution: "Coming soon.",
+  impact: "Coming soon.",
+  details: project.tags,
+};
+---
+
+<Layout
+  title={`${project.title} — Zack Jean`}
+  description={project.description}
+  ogTitle={project.title}
+  ogSub="Case Study · zackjean.com"
+>
+  <main>
+    <Nav />
+
+    <article class="case-study">
+      <a href="/#work" class="back-link">← Back to work</a>
+
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Case Study
+      </div>
+
+      <h1>{project.title}</h1>
+      <p class="summary">{project.description}</p>
+
+      <div class="tags">
+        {project.tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+
+      <div class="sections">
+        <div class="section">
+          <div class="section-label">The problem</div>
+          <p>{detail.problem}</p>
+        </div>
+
+        <div class="section">
+          <div class="section-label">The solution</div>
+          <p>{detail.solution}</p>
+        </div>
+
+        <div class="section">
+          <div class="section-label">The impact</div>
+          <p>{detail.impact}</p>
+        </div>
+
+        <div class="section">
+          <div class="section-label">Tech & tools</div>
+          <div class="detail-tags">
+            {detail.details.map((d) => (
+              <span class="detail-tag">{d}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .case-study {
+    max-width: 620px;
+    padding-bottom: 4rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 13px;
+    font-family: var(--font-mono);
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+    transition: color 0.15s;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow-line {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .summary {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    background: var(--color-accent-light);
+    color: #3C3489;
+    border: 0.5px solid var(--color-accent-mid);
+  }
+
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .section {
+    border-left: 2px solid var(--color-accent-mid);
+    padding-left: 1.25rem;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--color-muted);
+  }
+
+  .detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .detail-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    background: var(--color-tag-bg);
+    color: var(--color-muted);
+    border: 0.5px solid var(--color-border);
+  }
+</style>

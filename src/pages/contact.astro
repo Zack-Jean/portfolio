@@ -1,0 +1,200 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<Layout
+  title="Contact — Zack Jean"
+  description="Get in touch with Zack Jean — automation engineer and Technical Operations Leader."
+  ogTitle="Contact Zack Jean"
+  ogSub="Let's build something together"
+>
+  <main>
+    <Nav />
+
+    <section class="contact-section">
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Contact
+      </div>
+
+      <h1>Let's talk.</h1>
+      <p class="intro">
+        Whether you're curious about my work, exploring a collaboration, or
+        just want to connect — drop me a note and I'll get back to you.
+      </p>
+
+      <form
+        action="https://formspree.io/f/xgopjwbw"
+        method="POST"
+        class="contact-form"
+      >
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required rows="6" placeholder="What's on your mind?"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Send message</button>
+      </form>
+
+      <div class="alt-contact">
+        <span>Or reach me directly:</span>
+        <a href="mailto:zack.jean@gmail.com">zack.jean@gmail.com</a>
+        <span class="divider">·</span>
+        <a href="https://linkedin.com/in/zackjean" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="divider">·</span>
+        <a href="https://github.com/Zack-Jean" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .contact-section {
+    max-width: 580px;
+    padding-bottom: 4rem;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .eyebrow-line {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 52px);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--color-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  input, textarea {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px 14px;
+    border: 0.5px solid var(--color-border);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--color-text);
+    transition: border-color 0.15s;
+    outline: none;
+    resize: vertical;
+  }
+
+  input:focus, textarea:focus {
+    border-color: var(--color-accent);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #bbb;
+  }
+
+  .btn-submit {
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 11px 28px;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .btn-submit:hover {
+    opacity: 0.88;
+  }
+
+  .alt-contact {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-muted);
+    border-top: 0.5px solid var(--color-border);
+    padding-top: 1.5rem;
+  }
+
+  .alt-contact a {
+    color: var(--color-accent);
+  }
+
+  .alt-contact a:hover {
+    text-decoration: underline;
+  }
+
+  .divider {
+    color: var(--color-border);
+  }
+
+  @media (max-width: 500px) {
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -12,7 +12,7 @@ const rest = projects.filter((p) => !p.featured);
 
   <div class="projects-grid">
     {featured && (
-      <div class="card card-featured">
+      <a href={`/work/${featured.slug}`} class="card card-featured">
         <div class="card-inner">
           <div class="card-header">
             <div class="card-icon">
@@ -33,11 +33,11 @@ const rest = projects.filter((p) => !p.featured);
             ))}
           </div>
         </div>
-      </div>
+      </a>
     )}
 
     {rest.map((project) => (
-      <div class="card">
+      <a href={`/work/${project.slug}`} class="card">
         <div class="card-icon">
           <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 13V7M6 13V4M9 13V9M12 13V5" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round"/>
@@ -50,7 +50,7 @@ const rest = projects.filter((p) => !p.featured);
             <span class="card-tag">{tag}</span>
           ))}
         </div>
-      </div>
+      </a>
     ))}
   </div>
 </div>
@@ -85,11 +85,14 @@ const rest = projects.filter((p) => !p.featured);
   }
 
   .card {
+    display: block;
     background: #fff;
     border: 0.5px solid var(--color-border);
     border-radius: 10px;
     padding: 1.25rem;
     transition: border-color 0.15s;
+    text-decoration: none;
+    color: inherit;
   }
 
   .card:hover {
