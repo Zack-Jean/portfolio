@@ -152,13 +152,13 @@ import ObfuscatedEmail from './Obfuscatedemail.astro';
     gap: 1.5rem;
   }
 
-  .footer-links a {
+  .footer-links :global(a) {
     font-size: 13px;
     color: var(--color-muted);
     transition: color 0.15s;
   }
 
-  .footer-links a:hover {
+  .footer-links :global(a):hover {
     color: var(--color-text);
   }
 
