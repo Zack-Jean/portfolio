@@ -1,19 +1,4 @@
 ---
-/**
- * ObfuscatedEmail.astro
- *
- * Drop-in replacement for <a href="mailto:..."> links.
- * Encodes the email in base64 so scrapers can't harvest it
- * from raw HTML. JS decodes it on page load for real users.
- *
- * Usage:
- *   <ObfuscatedEmail
- *     user="zack.jean"
- *     domain="gmail.com"
- *     label="Email"
- *     class="your-css-class"
- *   />
- */
 
 interface Props {
   user: string;
