@@ -1,0 +1,392 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+
+const experience = [
+  {
+    role: "Technical Delivery Manager",
+    company: "Feedonomics / BigCommerce",
+    period: "2022 — Present",
+    description:
+      "Leading operational automation, reporting infrastructure, and AI enablement across the Global Services team. Built internal tooling across Google Workspace, Make.com, Monday.com, and Zoho Desk. Serving as AI Champion driving Claude adoption org-wide.",
+    highlights: [
+      "Designed and deployed Technical Support Scorecard system (multi-API automation)",
+      "Built and delivered 3-session Claude AI Enablement Program",
+      "Architected Make.com governance SOP adopted across the team",
+      "Automated ops revenue reporting pipeline for leadership",
+    ],
+  },
+  {
+    role: "Technical Operations Manager",
+    company: "Feedonomics",
+    period: "2020 — 2022",
+    description:
+      "Managed cross-functional ops workflows, client reporting pipelines, and team tooling. Introduced automation-first practices across daily ops processes.",
+    highlights: [
+      "Built Toggl → Google Sheets reporting automation",
+      "Led process improvement initiatives across Global Services",
+      "Managed Monday.com board infrastructure for ops tracking",
+    ],
+  },
+  {
+    role: "Senior Operations Specialist",
+    company: "Feedonomics",
+    period: "2018 — 2020",
+    description:
+      "Owned client delivery workflows and internal reporting. First exposure to API-based automation and Google Apps Script tooling.",
+    highlights: [
+      "Standardized client onboarding documentation",
+      "Built first-generation Google Sheets reporting dashboards",
+      "Reduced manual reporting time through scripted automation",
+    ],
+  },
+];
+
+const skills = {
+  "Languages & Scripting": ["Python", "JavaScript", "Google Apps Script"],
+  "Automation & Integration": ["Make.com", "Zapier", "REST APIs", "GraphQL"],
+  "Platforms & Tools": [
+    "Monday.com",
+    "Zoho Desk",
+    "Toggl Track",
+    "Confluence",
+    "Slack",
+    "Google Workspace",
+  ],
+  "AI & Enablement": [
+    "Claude / Anthropic",
+    "Prompt Engineering",
+    "AI Workflow Design",
+    "L&D Curriculum",
+  ],
+};
+---
+
+<Layout
+  title="Resume — Zack Jean"
+  description="Career history and skills of Zack Jean — Technical Operations Leader and automation engineer."
+  ogTitle="Zack Jean — Resume"
+  ogSub="Technical Operations Leader · AI Enablement"
+>
+  <main>
+    <Nav />
+
+    <div class="resume-header">
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Resume
+      </div>
+      <h1>Zack Jean</h1>
+      <p class="tagline">Technical Operations Leader · Automation Engineer · AI Enablement</p>
+      <div class="header-links">
+        <a href="mailto:zack.jean@gmail.com">zack.jean@gmail.com</a>
+        <span class="dot">·</span>
+        <a href="https://linkedin.com/in/zackjean" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="dot">·</span>
+        <a href="https://github.com/Zack-Jean" target="_blank" rel="noopener">GitHub</a>
+        <span class="dot">·</span>
+        <span>Sedona, AZ</span>
+      </div>
+    </div>
+
+    <div class="resume-body">
+      <div class="resume-main">
+        <div class="section-label">Experience<span class="label-line"></span></div>
+
+        <div class="timeline">
+          {experience.map((job) => (
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="job-header">
+                  <div>
+                    <div class="job-role">{job.role}</div>
+                    <div class="job-company">{job.company}</div>
+                  </div>
+                  <div class="job-period">{job.period}</div>
+                </div>
+                <p class="job-desc">{job.description}</p>
+                <ul class="job-highlights">
+                  {job.highlights.map((h) => (
+                    <li>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="resume-sidebar">
+        <div class="section-label">Skills<span class="label-line"></span></div>
+        {Object.entries(skills).map(([category, items]) => (
+          <div class="skill-group">
+            <div class="skill-category">{category}</div>
+            <div class="skill-tags">
+              {items.map((skill) => (
+                <span class="skill-tag">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div class="section-label" style="margin-top: 2rem;">Education<span class="label-line"></span></div>
+        <div class="edu-item">
+          <div class="edu-degree">B.S. Business Administration</div>
+          <div class="edu-school">Update with your school</div>
+          <div class="edu-year">Update with your year</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .resume-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid var(--color-border);
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow-line {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 52px);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  .header-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+
+  .header-links a {
+    color: var(--color-accent);
+  }
+
+  .header-links a:hover {
+    text-decoration: underline;
+  }
+
+  .dot { color: var(--color-border); }
+
+  .resume-body {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .label-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-border);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1.25rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 2px solid #fff;
+    flex-shrink: 0;
+    margin-top: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-content {
+    flex: 1;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .job-role {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  .job-company {
+    font-size: 13px;
+    color: var(--color-accent);
+    margin-top: 2px;
+  }
+
+  .job-period {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-muted);
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  .job-desc {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .job-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .job-highlights li {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--color-muted);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .job-highlights li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-mid);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  .skill-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .skill-category {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--color-tag-bg);
+    color: var(--color-muted);
+    border: 0.5px solid var(--color-border);
+  }
+
+  .edu-item {
+    font-size: 14px;
+  }
+
+  .edu-degree {
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 3px;
+  }
+
+  .edu-school {
+    color: var(--color-muted);
+    font-size: 13px;
+  }
+
+  .edu-year {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .resume-body {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

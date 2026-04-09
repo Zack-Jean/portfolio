@@ -1,5 +1,4 @@
 ---
-import { Analytics } from "@vercel/analytics/astro";
 
 interface Props {
   title?: string;
@@ -50,7 +49,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://zackjean
   </head>
   <body>
     <slot />
-    <Analytics />
   </body>
 </html>
 
