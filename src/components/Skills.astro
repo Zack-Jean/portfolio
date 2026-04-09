@@ -1,0 +1,85 @@
+---
+const primary = [
+  "Python",
+  "JavaScript",
+  "Google Apps Script",
+  "Make.com",
+  "Claude / AI Enablement",
+];
+
+const secondary = [
+  "Monday.com",
+  "Zoho Desk",
+  "Toggl Track",
+  "Google Workspace",
+  "Confluence",
+  "Slack",
+  "REST APIs",
+  "GraphQL",
+];
+---
+
+<div class="skills-section">
+  <div class="section-label">
+    skills<span class="label-line"></span>
+  </div>
+
+  <div class="skills">
+    {primary.map((skill) => (
+      <span class="tag tag-primary">{skill}</span>
+    ))}
+    {secondary.map((skill) => (
+      <span class="tag tag-secondary">{skill}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .skills-section {
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .label-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-border);
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 0.5px solid transparent;
+  }
+
+  .tag-primary {
+    background: var(--color-accent-light);
+    color: #3C3489;
+    border-color: var(--color-accent-mid);
+  }
+
+  .tag-secondary {
+    background: var(--color-tag-bg);
+    color: var(--color-muted);
+    border-color: var(--color-border);
+  }
+</style>

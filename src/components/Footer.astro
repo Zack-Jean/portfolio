@@ -1,0 +1,173 @@
+---
+---
+
+<section class="about" id="about">
+  <div class="section-label">
+    about<span class="label-line"></span>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a Technical Delivery Manager at Feedonomics (a BigCommerce
+        company), where I lead operational automation, reporting
+        infrastructure, and AI enablement across Global Services. I build
+        tools that close the gap between what software promises and what
+        teams actually need.
+      </p>
+      <p>
+        Based in Arizona. I work at the intersection of operations,
+        engineering, and AI — coding in Python and JavaScript, building on
+        Google Workspace, Make.com, Monday.com, and Zoho. Currently focused
+        on scaling intelligent automation and AI adoption inside enterprise
+        ops teams.
+      </p>
+    </div>
+
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">years in ops & tech</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">automations shipped</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+  <div class="footer-left">
+    <span class="footer-logo">zack<span>jean</span>.com</span>
+    <span class="footer-copy">© {new Date().getFullYear()}</span>
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/Zack-Jean" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/zackjean" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:zack.jean@gmail.com">Email</a>
+  </div>
+</footer>
+
+<style>
+  .about {
+    border-top: 0.5px solid var(--color-border);
+    padding-top: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .label-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 140px;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+
+  .footer {
+    border-top: 0.5px solid var(--color-border);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .footer-logo span {
+    color: var(--color-accent);
+  }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--color-muted);
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 560px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-stats {
+      flex-direction: row;
+    }
+  }
+</style>

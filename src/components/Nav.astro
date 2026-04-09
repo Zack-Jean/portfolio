@@ -1,0 +1,50 @@
+---
+---
+
+<nav class="nav">
+  <a href="/" class="logo">zack<span>jean</span>.com</a>
+  <ul class="nav-links">
+    <li><a href="#work">work</a></li>
+    <li><a href="#about">about</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<style>
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.75rem 0 2.5rem;
+    border-bottom: 0.5px solid var(--color-border);
+    margin-bottom: 3.5rem;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    color: var(--color-text);
+  }
+
+  .logo span {
+    color: var(--color-accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--color-muted);
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-text);
+  }
+</style>
