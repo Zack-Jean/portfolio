@@ -4,67 +4,54 @@ import Nav from "../components/Nav.astro";
 
 const experience = [
   {
-    role: "Technical Delivery Manager",
+    role: "Senior Manager, Global Technical Operations",
     company: "Feedonomics / BigCommerce",
-    period: "2022 — Present",
+    period: "2021 — Present",
+    note: "Promoted from Manager, Global Technical Operations",
     description:
-      "Leading operational automation, reporting infrastructure, and AI enablement across the Global Services team. Built internal tooling across Google Workspace, Make.com, Monday.com, and Zoho Desk. Serving as AI Champion driving Claude adoption org-wide.",
+      "Direct global SaaS operations strategy, automation architecture, and reporting infrastructure across international teams. Own multi-year technical operations roadmap, prioritizing automation investment, capacity planning, and enterprise scalability.",
     highlights: [
-      "Designed and deployed Technical Support Scorecard system (multi-API automation)",
-      "Built and delivered 3-session Claude AI Enablement Program",
-      "Architected Make.com governance SOP adopted across the team",
-      "Automated ops revenue reporting pipeline for leadership",
+      "Delivered $3.7M+ in cost savings and 60,000+ annual labor hours eliminated through automation strategy",
+      "Designed and scaled automation frameworks (Python/JavaScript) eliminating 7,500+ annual labor hours",
+      "Architected BI infrastructure enabling real-time operational visibility, reducing reporting cycles by 30%",
+      "Redesigned global ticket routing logic, decreasing SLA violations by 70%",
+      "Lead and develop a global team of 18 technical specialists across NA & EMEA",
+      "Present automation strategy and roadmap priorities to executive leadership on a recurring basis",
+      "Serve as senior liaison between product, engineering, and operations for enterprise client alignment",
     ],
   },
   {
-    role: "Technical Operations Manager",
-    company: "Feedonomics",
-    period: "2020 — 2022",
+    role: "RPA Product Manager & Global Operations Agile Lead",
+    company: "Deckers Brands",
+    period: "2017 — 2021",
+    note: "",
     description:
-      "Managed cross-functional ops workflows, client reporting pipelines, and team tooling. Introduced automation-first practices across daily ops processes.",
+      "Led enterprise automation strategy and agile product delivery across global systems.",
     highlights: [
-      "Built Toggl → Google Sheets reporting automation",
-      "Led process improvement initiatives across Global Services",
-      "Managed Monday.com board infrastructure for ops tracking",
-    ],
-  },
-  {
-    role: "Senior Operations Specialist",
-    company: "Feedonomics",
-    period: "2018 — 2020",
-    description:
-      "Owned client delivery workflows and internal reporting. First exposure to API-based automation and Google Apps Script tooling.",
-    highlights: [
-      "Standardized client onboarding documentation",
-      "Built first-generation Google Sheets reporting dashboards",
-      "Reduced manual reporting time through scripted automation",
+      "Built and scaled enterprise RPA program from inception to 45,000+ annual hours saved",
+      "Delivered $750K+ in direct cost savings through RPA program",
+      "Designed enterprise risk mitigation platform generating $3M+ net positive impact in first year",
+      "Eliminated $100K annual vendor spend via internal HR automation platform",
+      "Directed cross-functional agile teams delivering 987 production releases across enterprise OMS platform",
+      "Established enterprise automation governance framework and Center of Excellence",
+      "Led global system optimization initiatives across NA, EMEA, and APAC operations",
     ],
   },
 ];
 
 const skills = {
-  "Languages & Scripting": ["Python", "JavaScript", "Google Apps Script"],
-  "Automation & Integration": ["Make.com", "Zapier", "REST APIs", "GraphQL"],
-  "Platforms & Tools": [
-    "Monday.com",
-    "Zoho Desk",
-    "Toggl Track",
-    "Confluence",
-    "Slack",
-    "Google Workspace",
-  ],
-  "AI & Enablement": [
-    "Claude / Anthropic",
-    "Prompt Engineering",
-    "AI Workflow Design",
-    "L&D Curriculum",
-  ],
+  "Automation & Engineering": ["Python", "JavaScript", "RPA (UiPath)", "REST APIs", "Make.com", "Zapier"],
+  "Data & Analytics": ["Tableau", "SQL", "PowerBI", "LookerStudio", "Google Sheets", "Oracle BIEE/BAM"],
+  "Platforms & Systems": ["Salesforce", "HubSpot", "ServiceNow", "Jira", "Confluence", "Oracle EBS", "Zoho Desk"],
+  "AI & Enablement": ["Claude / Anthropic", "Prompt Engineering", "AI Workflow Design", "L&D Curriculum"],
+  "Methodologies": ["Agile/Scrum", "Systems Architecture", "Process Optimization", "Change Management"],
+  "Leadership": ["Global Team Leadership", "Strategic Planning", "Budget Ownership", "Cross-Functional Execution"],
 };
 ---
 
 <Layout
   title="Resume — Zack Jean"
-  description="Career history and skills of Zack Jean — Technical Operations Leader and automation engineer."
+  description="Resume of Zack Jean — Technical Operations Leader specializing in SaaS automation, scalable systems architecture, and high-performing global teams."
   ogTitle="Zack Jean — Resume"
   ogSub="Technical Operations Leader · AI Enablement"
 >
@@ -77,7 +64,10 @@ const skills = {
         Resume
       </div>
       <h1>Zack Jean</h1>
-      <p class="tagline">Technical Operations Leader · Automation Engineer · AI Enablement</p>
+      <p class="tagline">Technical Operations Leader · Automation Architect · AI Enablement</p>
+      <p class="exec-summary">
+        Specializing in SaaS automation, scalable systems architecture, and building high-performing global teams. Delivered $3.7M+ in cost savings and 60,000+ annual labor hours through automation strategy and cross-functional product partnership.
+      </p>
       <div class="header-links">
         <a href="mailto:zack.jean@gmail.com">zack.jean@gmail.com</a>
         <span class="dot">·</span>
@@ -85,7 +75,7 @@ const skills = {
         <span class="dot">·</span>
         <a href="https://github.com/Zack-Jean" target="_blank" rel="noopener">GitHub</a>
         <span class="dot">·</span>
-        <span>Sedona, AZ</span>
+        <span>Clarkdale, AZ</span>
       </div>
     </div>
 
@@ -102,6 +92,7 @@ const skills = {
                   <div>
                     <div class="job-role">{job.role}</div>
                     <div class="job-company">{job.company}</div>
+                    {job.note && <div class="job-note">{job.note}</div>}
                   </div>
                   <div class="job-period">{job.period}</div>
                 </div>
@@ -129,13 +120,6 @@ const skills = {
             </div>
           </div>
         ))}
-
-        <div class="section-label" style="margin-top: 2rem;">Education<span class="label-line"></span></div>
-        <div class="edu-item">
-          <div class="edu-degree">B.S. Business Administration</div>
-          <div class="edu-school">Update with your school</div>
-          <div class="edu-year">Update with your year</div>
-        </div>
       </div>
     </div>
   </main>
@@ -180,7 +164,16 @@ const skills = {
     font-size: 15px;
     font-weight: 300;
     color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .exec-summary {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--color-muted);
+    max-width: 620px;
     margin-bottom: 1rem;
+    font-weight: 300;
   }
 
   .header-links {
@@ -207,6 +200,7 @@ const skills = {
     grid-template-columns: 1fr 260px;
     gap: 3rem;
     align-items: start;
+    padding-bottom: 4rem;
   }
 
   .section-label {
@@ -230,7 +224,6 @@ const skills = {
   .timeline {
     display: flex;
     flex-direction: column;
-    gap: 0;
     position: relative;
   }
 
@@ -292,6 +285,13 @@ const skills = {
     font-size: 13px;
     color: var(--color-accent);
     margin-top: 2px;
+  }
+
+  .job-note {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--color-muted);
+    margin-top: 3px;
   }
 
   .job-period {
@@ -360,28 +360,6 @@ const skills = {
     background: var(--color-tag-bg);
     color: var(--color-muted);
     border: 0.5px solid var(--color-border);
-  }
-
-  .edu-item {
-    font-size: 14px;
-  }
-
-  .edu-degree {
-    font-weight: 500;
-    color: var(--color-text);
-    margin-bottom: 3px;
-  }
-
-  .edu-school {
-    color: var(--color-muted);
-    font-size: 13px;
-  }
-
-  .edu-year {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--color-muted);
-    margin-top: 3px;
   }
 
   @media (max-width: 640px) {
